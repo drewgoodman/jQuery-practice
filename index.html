@@ -9,14 +9,29 @@
 </head>
 
 <body>
-    <p id="test">This is a paragraph inside a p tag.</p>
-    <button>Hide Paragraph</button>
+    <p id="test">This is a paragraph inside a p tag with an id of "test".</p>
+    <button id="test-btn">Hide Paragraph Above By Id</button>
+    <hr>
+    <p class="tester">This is a paragraph inside a p tag with the class of "tester".</p>
+    <button id="test-class-btn">Hide Paragraph Above By Class</button>
+    <hr>
+    <button id="test-all-p">Hide All Paragraphs</button>
+    <hr>
+
+
 </body>
 <script>
     $(document).ready(function(){
 
-        $("button").click(function() {
+        $("#test-btn").click(function() {
             $("#test").hide();
+        });
+
+        $("#test-class-btn").click(function() {
+            $(".tester").hide();
+        });
+        $("#test-all-p").click(function(){
+            $("p").hide();
         })
 
     });
