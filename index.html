@@ -15,12 +15,27 @@
     <p class="tester">This is a paragraph inside a p tag with the class of "tester".</p>
     <button id="test-class-btn">Hide Paragraph Above By Class</button>
     <hr>
-    <button id="test-all-p">Hide All Paragraphs</button>
+    <button id="test-all-p">Hide All Paragraphs - with a Double Click</button>
     <hr>
+    <button id="mouse-over">Mouse Over for an Alert</button>
+    <hr>
+    <button id="mouse-test">Click / Release / Hover</button>
+    <p id="mouse-test-feedback"></p>
+    <hr>
+    <button id="toggle-btn">Toggle Text</button><p id="toggle-text">Text Toggled!</p>
+    <hr>
+    <button id="toggle-delay-btn">Toggle All Paragraphs Smooth</button>
+    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat quo mollitia molestiae quas, quidem non cum placeat.</p>
+    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat quo mollitia molestiae quas, quidem non cum placeat.</p>
+    <hr>
+    
+
 
 
 </body>
 <script>
+
+
     $(document).ready(function(){
 
         $("#test-btn").click(function() {
@@ -30,9 +45,32 @@
         $("#test-class-btn").click(function() {
             $(".tester").hide();
         });
-        $("#test-all-p").click(function(){
+
+        $("#test-all-p").dblclick(function(){
             $("p").hide();
-        })
+        });
+
+        $("#mouse-over").mouseenter(function(){
+            alert("You looked at me!");
+            console.log("This is a console log!");
+        });
+
+        $("#mouse-test").mousedown(function(){
+            $("#mouse-test-feedback").html("Mouse On!");
+        });
+        $("#mouse-test").mouseup(function(){
+            $("#mouse-test-feedback").html("Mouse Off!");
+        });
+        $("#mouse-test").hover(function(){
+            $("#mouse-test-feedback").html("I don't like you hovering....");
+        });
+        $("#toggle-btn").click(function() {
+            $("#toggle-text").toggle();
+        });
+        $("#toggle-delay-btn").click(function () {
+            $("p").toggle(500);
+        });
+
 
     });
 </script>
