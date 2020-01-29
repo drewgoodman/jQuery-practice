@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,56 +23,86 @@
     <button id="mouse-test">Click / Release / Hover</button>
     <p id="mouse-test-feedback"></p>
     <hr>
-    <button id="toggle-btn">Toggle Text</button><p id="toggle-text">Text Toggled!</p>
+    <button id="toggle-btn">Toggle Text</button>
+    <p id="toggle-text">Text Toggled!</p>
     <hr>
     <button id="toggle-delay-btn">Toggle All Paragraphs Smooth</button>
-    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat quo mollitia molestiae quas, quidem non cum placeat.</p>
-    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat quo mollitia molestiae quas, quidem non cum placeat.</p>
+    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat
+        quo mollitia molestiae quas, quidem non cum placeat.</p>
+    <p>Paragraph goes here! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, dolorem saepe error repellat
+        quo mollitia molestiae quas, quidem non cum placeat.</p>
     <hr>
-    
+    <div id="drop-menu-area">
+        <h1>Dropdown Menu</h1>
+        <div id="drop-menu">
+            <p>Menu Option 1</p>
+            <p>Menu Option 2</p>
+        </div>
+    </div>
+    <hr>
+
 
 
 
 </body>
+
+<style>
+</style>
+
 <script>
 
+    $("#drop-menu").hide();
 
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-        $("#test-btn").click(function() {
+        $("#test-btn").click(function () {
             $("#test").hide();
         });
 
-        $("#test-class-btn").click(function() {
+        $("#test-class-btn").click(function () {
             $(".tester").hide();
         });
 
-        $("#test-all-p").dblclick(function(){
+        $("#test-all-p").dblclick(function () {
             $("p").hide();
         });
 
-        $("#mouse-over").mouseenter(function(){
+        $("#mouse-over").mouseenter(function () {
             alert("You looked at me!");
             console.log("This is a console log!");
         });
 
-        $("#mouse-test").mousedown(function(){
+        $("#mouse-test").mousedown(function () {
             $("#mouse-test-feedback").html("Mouse On!");
         });
-        $("#mouse-test").mouseup(function(){
+
+        $("#mouse-test").mouseup(function () {
             $("#mouse-test-feedback").html("Mouse Off!");
         });
-        $("#mouse-test").hover(function(){
+
+        $("#mouse-test").hover(function () {
             $("#mouse-test-feedback").html("I don't like you hovering....");
         });
-        $("#toggle-btn").click(function() {
+
+        $("#toggle-btn").click(function () {
             $("#toggle-text").toggle();
         });
+
         $("#toggle-delay-btn").click(function () {
             $("p").toggle(500);
         });
 
+        $("#drop-menu-area").mouseenter(function() { 
+            $("#drop-menu").show(500);
+        });
+
+        $("#drop-menu-area").mouseleave(function() { 
+            $("#drop-menu").hide(300);
+        });
 
     });
+
+
 </script>
+
 </html>
