@@ -12,24 +12,27 @@
             display: inline-block;
             border-radius: 50%;
             margin: 10px;
-            position: relative;
-            padding: 50px;
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            padding: 20px;
             cursor: pointer;
+            z-index: 2;
         }
 
         .circle {
-            width: 100px;
-            height: 100px;
+            width: 40px;
+            height: 40px;
             position: relative;
         }
 
         .line {
             position: absolute;
-            height: 12px;
+            height: 5px;
             width: 100%;
             background: white;
             border-radius: 8px;
-            transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55) 0.95s;
+            transition: all cubic-bezier(0.26, 0.1, 0.27, 1.55) 0.40s;
         }
 
         .top {
@@ -54,6 +57,31 @@
             top: 48%;
         }
 
+        #menu {
+            /* transition: all .4s ease-in-out; */
+            /* display: none; */
+            height: 100vh;
+            width: 300px;
+            z-index: 2;
+            background: #0d6fba;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translateX(-300px);
+        }
+
+        #overlay {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            z-index: 1;
+            background: rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+
     </style>
 </head>
 <body>
@@ -64,12 +92,39 @@
             <span class="line bottom"></span>
         </div>
     </div>
+    <div id="menu" class="fade">
+        <ul>
+            <li>Link 1</li>
+            <li>Link 2</li>
+            <li>Link 3</li>
+        </ul>
+    </div>
+    <div id="overlay" class="fade"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+
+        menuActive = false;
         $("#wrapper").click( function() {
             $(".icon").toggleClass("close");
+            if (menuActive) {
+                $("#overlay").fadeOut();
+                $("#menu").animate({left: '-300px'});
+                menuActive = false;
+            } else {
+                $("#overlay").fadeIn();
+                $("#menu").animate({left: '300px'});
+                // $("#menu").show().animate({left: '300px'});
+                menuActive = true;
+            }
         });
+
+        $("#overlay").click( function() {
+            $(".icon").toggleClass("close");
+            menuActive = false;
+            $(".fade").fadeOut();
+            $("#menu").animate({left: '-300px'});
+        })
 
     </script>
 </body>
